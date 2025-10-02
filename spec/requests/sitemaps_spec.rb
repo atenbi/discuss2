@@ -5,7 +5,7 @@ RSpec.describe "Sitemaps", type: :request do
     context "when redirecting to R2" do
       it "redirects to cloudflare R2 sitemap" do
         allow(Rails.application.credentials).to receive(:cloudflare).and_return(
-          { r2_url: "https://example.r2.cloudflarestorage.com" }
+          { public_url: "https://example.r2.cloudflarestorage.com" }
         )
 
         get "/sitemap.xml.gz"
