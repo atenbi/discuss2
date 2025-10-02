@@ -1,0 +1,79 @@
+section id="hero" class="mb-24" aria-labelledby="hero-heading"
+	div class="flex w-[335px] lg:w-[686px] flex-col items-center gap-10"
+		div class="flex flex-col items-center gap-2.5 text-[#F8F8F8] font-medium"
+			span id="hero-heading" class="text-[40px] text-center lg:text-6xl leading-[120%] lg:tracking-[-1.8px]"
+				| Welcome to discuss²
+			span class="text-base lg:text-xl leading-[120%] tracking-[-0.6px]"
+				| a modern, open-source community platform.
+		div class="flex items-center gap-2.5" role="group" aria-label="Call to action buttons"
+			= link_to "https://github.com/atenbi/discuss2/blob/main/README.md", target: "_blank", class: "btn-white", "aria-label" => "Build your community - opens in new tab" do
+				span Build your community
+				= inline_svg_tag "icons/homepage/arrow-up-right.svg", "aria-hidden" => "true"
+			= mail_to "discuss2@atenbi.com", "Contact us", class: "btn-ghost", "aria-label" => "Contact us via email"
+section id="features" class="mb-24 relative" aria-labelledby="features-heading"
+	div class="absolute rounded-full bg-gradient-to-b from-[#ff498f] via-[#ff0088] to-[#fbff00] w-[60vw] h-[85vh] lg:w-[88.23vw] lg:h-[14vh] blur-[150px] left-1/2 -translate-x-1/2 top-[-100px] lg:top-[20px] -z-10" aria-hidden="true"
+	= render Homepage::FeatureCardsComponent.new(features: @features)
+section id="advantages" class="mb-24" aria-labelledby="advantages-heading"
+	div class="flex flex-col gap-5"
+		div class="relative overflow-hidden flex lg:max-w-[1200px] max-h-[790px] lg:h-[600px] lg:max-h-[600px] w-full min-h-[500px] p-5 lg:p-10 flex-col gap-8 lg:gap-0 lg:justify-between items-start rounded-[20px] border border-[#4C4C4C] bg-[#1E1F22]" role="article" aria-labelledby="open-source-heading"
+			= inline_svg_tag "icons/homepage/open-source.svg", "aria-hidden" => "true"
+			div class="flex w-full lg:max-w-[548px] flex-col items-start order-2 lg:order-1"
+				span id="open-source-heading" class="text-white text-base lg:text-xl leading-[150%] tracking-[-0.4px] font-medium break-words"
+					| discuss² is a fully open source discussion platform released under the MIT license. Self-host on your own infrastructure with complete control over your data and community.
+			div class="w-[245px] h-[330px] lg:w-[371px] lg:h-[770px] aspect-ratio-116/241 lg:aspect-53/110 relative lg:absolute  lg:top-auto lg:right-[84px] lg:bottom-[-250px] bg-[url('backgrounds/homepage/discuss-mobile-1.png')] bg-cover bg-no-repeat order-1 lg:order-2" role="img" aria-label="Mobile app screenshot showing discuss² interface"
+		div class="flex flex-col lg:flex-row gap-5"
+			div class="flex flex-col lg:max-w-[588px] lg:h-[600px] p-10 justify-between items-start rounded-[20px] border border-[#4C4C4C] bg-[#1E1F22]" role="article" aria-labelledby="customizable-heading"
+				= inline_svg_tag "icons/homepage/graphic-design.svg", "aria-hidden" => "true"
+				div class="flex flex-col items-start gap-5"
+					span id="customizable-heading" class="text-white text-[20px] lg:text-2xl font-medium leading-[150%] tracking-[-0.4px]"
+						| Fully Customizable Modify colors, layouts, logos, and extend the front-end to match your brand perfectly.
+					= link_to "https://github.com/atenbi/discuss2/blob/main/README.md", target: "_blank", class: "btn-ghost", "aria-label" => "Get started with customization - opens in new tab" do
+						span Get started
+						= inline_svg_tag "icons/homepage/arrow-up-right.svg", "aria-hidden" => "true"
+			div class="flex flex-col lg:w-[588px] lg:h-[600px] p-10 justify-between items-start rounded-[20px] border border-[#4C4C4C] bg-[#1E1F22]" role="article" aria-labelledby="security-heading"
+				= inline_svg_tag "icons/homepage/security-lock.svg", "aria-hidden" => "true"
+				div class="flex flex-col items-start gap-5"
+					span id="security-heading" class="text-white text-2xl font-medium leading-[150%] tracking-[-0.4px]"
+						| Security-Focused Industry-standard authentication, input validation, and permission handling with community-driven security improvements.
+					= mail_to "discuss2@atenbi.com", class: "btn-ghost", "aria-label" => "Contact us about security - opens email client" do
+						span Contact us
+						= inline_svg_tag "icons/homepage/arrow-up-right.svg", "aria-hidden" => "true"
+section id="intro" class="mb-24" aria-labelledby="intro-heading"
+	div class="flex flex-col max-w-[792px] items-center gap-10 text-center text-[20px] lg:text-3xl font-medium leading-[140%] lg:leading-[120%] tracking-[-0.6px] lg:tracking-[-0.9px] bg-gradient-to-r from-[#E6A2A2] via-[#FFEADC] to-[#AECAFF] bg-clip-text text-transparent" role="region" aria-labelledby="intro-heading"
+		span id="intro-heading"
+			| discuss² is a sleek, lightweight forum software designed to power thoughtful conversations online.
+		span
+			| Inspired by platforms like the OpenAI Community Forum, it combines a clean interface with powerful tools that make it easy to create, manage, and grow your community.
+section id="communities" class="mb-24 relative" aria-labelledby="communities-heading"
+	div class="absolute rounded-full bg-gradient-to-b from-[#f0b051] via-[#ff8204] to-[#b1cdaa] w-[60vw] h-[85vh] lg:w-[75.23vw] lg:h-[24vh] blur-[150px] left-1/2 -translate-x-1/2 top-[-250px] lg:top-[-60px] -z-10" aria-hidden="true"
+	div class="relative flex lg:max-w-[1196px] lg:h-[480px] py-[200px] lg:py-[148px] px-5 lg:px-[202px] flex-col lg:flex-row lg:justify-center items-start lg:items-center rounded-[20px] bg-[url('backgrounds/homepage/woman-with-laptop.jpg')] lg:bg-[position:100%_170.704%] bg-cover" role="img" aria-labelledby="communities-heading"
+		div class="absolute inset-0 rounded-[20px] bg-gradient-to-b from-[rgba(0,19,61,0.40)] to-[rgba(0,19,61,0.40)]" aria-hidden="true"
+		div class="relative lg:max-w-[792px] flex flex-col items-center"
+			span id="communities-heading" class="text-white text-center text-[20px] lg:text-3xl font-medium leading-[140%] lg:leading-[120%] tracking-[-0.6px] lg:tracking-[-0.9px]"
+				| Whether you're building a space for developers, enthusiasts, support discussions, or open collaboration - discuss² helps you do it with style and simplicity.
+	div class="flex flex-col lg:flex-row gap-5 mt-8"
+		div class="flex flex-col lg:max-w-[588px] lg:h-[600px] p-5 lg:p-10 rounded-[20px] border border-[#4C4C4C] bg-[#1E1F22] justify-between items-start" role="article" aria-labelledby="developers-heading"
+			span id="developers-heading" class="text-white text-[40px] leading-[120%] tracking-[-1.2px]"
+				| For Developers,<br> By Developers
+			div class="flex flex-col items-start gap-5"
+				div class="flex flex-col gap-8 text-white text-base lg:text-xl font-medium leading-[150%] tracking-[-0.32px] lg:tracking-[-0.4px] opacity-80"
+					span
+						| discuss² is designed to be developer-friendly from the ground up. The codebase is clean, modular, and well-documented - making it easy to contribute, extend, or integrate into other projects.
+					span
+						| Check out the GitHub repository to clone, fork, or start contributing today.
+				= link_to "https://github.com/atenbi/discuss2", class: "btn-ghost", target: "_blank", "aria-label" => "Visit GitHub repository - opens in new tab" do
+					span GitHub repository
+					= inline_svg_tag "icons/homepage/arrow-up-right.svg", "aria-hidden" => "true"
+		div class="relative overflow-hidden flex flex-col lg:w-[588px] h-[444px] lg:h-[600px] p-10 rounded-[20px] border border-[#4C4C4C] bg-[#1E1F22] justify-between items-start" role="article"
+			div class="w-[267px] lg:w-[371px] h-[554px] lg:h-[770px] aspect-ratio-[40/83] lg:aspect-53/110 absolute right-[33px] lg:right-[108px] bottom-[-151px] lg:bottom-[-250px] bg-[url('backgrounds/homepage/discuss-mobile-2.png')] bg-cover bg-no-repeat" role="img" aria-label="Second mobile app screenshot showing discuss² features"
+section id="join-the-movement" class="mb-8 w-full relative" aria-labelledby="movement-heading"
+	div class="absolute rounded-full bg-gradient-to-b from-[#4666e3] via-[#2f6fd6] to-[#6584f4] w-[100vw] h-[45vh] lg:w-[78.23vw] lg:h-[24vh] blur-[150px] left-1/2 -translate-x-1/2 top-[-100px] lg:top-[30px] -z-10" aria-hidden="true"
+	div class="w-full overflow-hidden flex items-center justify-center"
+		div class="relative flex w-[100vw] h-[560px] 2xl:max-w-[1440px] lg:h-[560px] py-10 lg:py-20 px-5 lg:px-[120px] flex-col items-center gap-2 bg-[url('backgrounds/homepage/three-laughing-men.jpg')] bg-cover bg-center" role="img" aria-labelledby="movement-heading"
+			div class="absolute inset-0 bg-gradient-to-b from-[rgba(0,19,61,0.40)] to-[rgba(0,19,61,0.40)]" aria-hidden="true"
+			div class="relative flex flex-col justify-between items-center h-full"
+				span id="movement-heading" class="text-white text-center text-3xl font-medium leading-[120%] tracking-[-0.9px]"
+					| Join the Movement
+				div class="max-w-[560px] text-center"
+					span class="text-white text-sm font-medium leading-[120%] tracking-[-0.42px]"
+						| discuss² isn't just software - it's a growing open-source project backed by a community that believes in open, accessible, and meaningful online discussion.

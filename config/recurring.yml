@@ -1,0 +1,5 @@
+production:
+  refresh_sitemap:
+    class: RefreshSitemapJob
+    queue: default
+    shedule: at 5am every day

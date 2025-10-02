@@ -1,0 +1,201 @@
+div class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 text-white"
+  h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight mb-4 sm:mb-6" Privacy Policy - discuss² (Open-Source Forum Engine)
+  p class="text-xs sm:text-sm text-gray-100 mb-4 sm:mb-6" 
+    | Effective date:
+    span class="ml-2 font-semibold text-gray-200" 2025-09-22
+  p class="text-xs sm:text-sm text-gray-100 mb-4 sm:mb-6"
+    | License of software:
+    span class="ml-2 font-semibold text-gray-200" MIT
+    |  (this Privacy Policy covers deployments of the software; it is not a license for the code)
+  div class="space-y-3 sm:space-y-4 mb-6 sm:mb-8"
+    p class="text-sm sm:text-base text-gray-200 leading-relaxed"
+      | This Privacy Policy describes how deployments of the discuss² forum engine (the "Software") may collect, use, and share personal data. Because the Software is open-source and can be self-hosted or offered by a third party, the data controller is the party who operates the specific deployment (the "Operator").
+    p class="text-sm sm:text-base text-gray-200 leading-relaxed"
+      | If you run your own instance: Replace the placeholders in square brackets below with your information. If you use a hosted instance provided by someone else: Contact the host for the version that applies to their deployment.
+  section id="intro" class="mb-4 sm:mb-6"
+    h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3" 0) Open-source disclaimer (no responsibility for Operator actions)
+    p class="text-sm sm:text-base text-gray-200 leading-relaxed"
+      | The Software is provided "as is" under the MIT License. We (the original authors/maintainers of discuss²) do not operate your instance and are not the data controller for your deployment. We are not responsible or liable for any Operator or administrator actions, configurations, misuse, or violations of law, nor for any user behavior on deployments, forks, copies, or derivatives of this Software. Each Operator is solely responsible for complying with applicable laws, providing accurate notices and consents, honoring user rights, implementing security, and responding to legal requests for their instance.
+  section id="data-controller" class="mb-4 sm:mb-6"
+    h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3" 1) Who is the data controller?
+    div class="space-y-2 sm:space-y-3"
+      p class="text-sm sm:text-base text-gray-200"
+        | Operator:
+        span class="ml-2 font-semibold block sm:inline" atEnbi Sp. z.o.o.
+      p class="text-sm sm:text-base text-gray-200"
+        | Address:
+        span class="ml-2 font-semibold block sm:inline" ul. Rondo Ignacego Daszynskiego 2b, 00-843 Warsaw, Poland
+      p class="text-sm sm:text-base text-gray-200"
+        | Contact:
+        = mail_to "discuss2@atenbi.com", "discuss2@atenbi.com", class: "ml-2 font-semibold block sm:inline"
+      p class="text-sm sm:text-base text-gray-200"
+        |> Website:
+        = link_to "https://discuss2.com", "https://discuss2.com", class: "ml-2 font-semibold block sm:inline break-all"
+  section id="data-processing" class="mb-4 sm:mb-6"
+    h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3" 2) What personal data we process
+    p class="text-sm sm:text-base text-gray-200 mb-2 sm:mb-3" Depending on configuration and use:
+    ul class="list-disc pl-4 sm:pl-6 space-y-1 sm:space-y-2 text-sm sm:text-base text-gray-200"
+      li class="leading-relaxed" Account data: display name, username/handle, email address, password hash (never the raw password), role/permissions (Admin/Moderator/User).
+      li class="leading-relaxed" OAuth data (optional): basic profile and email from an identity provider (e.g., Google) when you sign in with OAuth (actual fields depend on provider scopes and your consent).
+      li class="leading-relaxed" Profile data (optional): avatar, bio, links, any info you add.
+      li class="leading-relaxed" Forum content: topics, posts, replies, reactions, uploaded media, timestamps, edit history.
+      li class="leading-relaxed" Device & usage data: IP address, user-agent, log files, pages viewed, referring URLs, interaction events, error logs.
+      li class="leading-relaxed" Email notifications (optional): delivery status, opens/clicks if the email service used by the Operator tracks them.
+      li class="leading-relaxed" Anti-spam & security data (optional): invisible captcha tokens and risk signals, rate-limit counters, moderation flags.
+      li class="leading-relaxed" Cookies/local storage: session/auth cookies, CSRF/security cookies, preferences (e.g., theme).
+    p class="text-sm sm:text-base text-gray-200 mt-2 sm:mt-3" 
+      | Special category data:
+      span class="ml-2 font-semibold" Not required by the Software.
+      |  Users should not submit sensitive data. Operators should moderate and remove sensitive data that is not appropriate for the forum's purpose.
+  section id="data-processing-purposes" class="mb-4 sm:mb-6"
+    h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3" 3) Purposes and legal bases (GDPR/UK GDPR)
+    p class="text-sm sm:text-base text-gray-200 mb-2 sm:mb-3"
+      | The Software may process personal data for the following purposes and legal bases:
+    ul class="list-disc pl-4 sm:pl-6 space-y-1 sm:space-y-2 text-sm sm:text-base text-gray-200"
+      li class="leading-relaxed"
+        span class="font-semibold" Account registration & authentication:
+        |  sign up/sign in, profile management. Legal basis: performance of a contract (Terms) or legitimate interests; consent for OAuth where required.
+      li class="leading-relaxed"
+        span class="font-semibold" Core forum functionality:
+        |  posting, discussions, search, tags, notifications. Legal basis: performance of a contract or legitimate interests.
+      li class="leading-relaxed"
+        span class="font-semibold" Moderation & safety:
+        |  enforcing community rules, detecting spam/abuse, securing the service. Legal basis: legitimate interests; legal obligation where applicable.
+      li class="leading-relaxed"
+        span class="font-semibold" Service operations:
+        |  debugging, error fixing, availability, performance. Legal basis: legitimate interests.
+      li class="leading-relaxed"
+        span class="font-semibold" Communications:
+        |  transactional emails (verification, password reset). Legal basis: performance of a contract; legitimate interests. Optional marketing emails require consent (if enabled by the Operator). Where local law requires consent for certain cookies/analytics, the Operator will obtain it via a banner or settings.
+  section id="data-sources" class="mb-4 sm:mb-6"
+    h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3" 4) Sources of data
+    p class="text-sm sm:text-base text-gray-200 mb-2 sm:mb-3"
+      | Data may come from:
+    ul class="list-disc pl-4 sm:pl-6 space-y-1 sm:space-y-2 text-sm sm:text-base text-gray-200"
+      li class="leading-relaxed" Directly from you (registration, profile, posts).
+      li class="leading-relaxed" Identity providers (if you use OAuth, e.g., Google).
+      li class="leading-relaxed" Your device (server logs, cookies, similar technologies).
+      li class="leading-relaxed" Moderators/admins (annotations/flags for safety and compliance).
+  section id="data-sharing" class="mb-4 sm:mb-6"
+    h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3" 5) Sharing and disclosures
+    p class="text-sm sm:text-base text-gray-200 mb-2 sm:mb-3"
+      | Depending on configuration, data may be shared with:
+    ul class="list-disc pl-4 sm:pl-6 space-y-1 sm:space-y-2 text-sm sm:text-base text-gray-200"
+      li class="leading-relaxed" Service providers (processors): cloud hosting, email delivery, file/object storage/CDN, error tracking, anti-spam/captcha—acting under the Operator's instructions.
+      li class="leading-relaxed" Moderators/admins: designated by the Operator; may access content and metadata to enforce rules.
+      li class="leading-relaxed" Public audience: content you publish can be public, indexed by search engines, and accessible via APIs (if enabled).
+      li class="leading-relaxed" Legal/compliance: to comply with law, protect rights/safety, or respond to lawful requests.
+    p class="text-sm sm:text-base text-gray-200 mt-2 sm:mt-3"
+      | Operator action required — list processors/sub-processors:
+    ul class="list-disc pl-4 sm:pl-6 space-y-1 sm:space-y-2 text-sm sm:text-base text-gray-200"
+      li class="leading-relaxed" Hosting: [Provider, region]
+      li class="leading-relaxed" Email: [Provider]
+      li class="leading-relaxed" Object storage/CDN: [Provider]
+      li class="leading-relaxed" Error monitoring (optional): [Provider]
+      li class="leading-relaxed" Anti-spam/captcha (optional): [Provider]
+  section id="data-transfer" class="mb-4 sm:mb-6"
+    h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3" 6) International data transfers
+    p class="text-sm sm:text-base text-gray-200 leading-relaxed"
+      | If data is transferred outside your jurisdiction (e.g., from the EEA/UK to another country), the Operator will use appropriate safeguards (adequacy decisions, Standard Contractual Clauses) and assess recipient-country legal requirements.
+  section id="data-retention" class="mb-4 sm:mb-6"
+    h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3" 7) Data retention
+    p class="text-sm sm:text-base text-gray-200 mb-2 sm:mb-3"
+      | Typical retention examples (Operators should set concrete periods to match law):
+    ul class="list-disc pl-4 sm:pl-6 space-y-1 sm:space-y-2 text-sm sm:text-base text-gray-200"
+      li class="leading-relaxed" Account data: kept while your account is active; deleted or anonymized within [X days/months] after closure.
+      li class="leading-relaxed" Forum content: retained to preserve discussion history; Operators may allow deletion/anonymization subject to forum rules and legal holds.
+      li class="leading-relaxed" Logs: typically [e.g., 30-180 days] for security/operations.
+      li class="leading-relaxed" Backups: kept for disaster recovery for up to [e.g., 90 days] before rotation.
+  section id="data-rights" class="mb-4 sm:mb-6"
+    h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3" 8) Your rights
+    p class="text-sm sm:text-base text-gray-200 leading-relaxed"
+      | Depending on your location, you may have the right to access, correct, delete, port, restrict/object, withdraw consent (where applicable), and lodge a complaint with a supervisory authority.
+    p class="text-sm sm:text-base text-gray-200 leading-relaxed"
+      | How to exercise rights:
+      |  Contact
+      span class="ml-1 font-semibold break-all" [privacy email]
+      | . We may need to verify identity and account control.
+    p class="text-sm sm:text-base text-gray-200 mt-2 sm:mt-3 leading-relaxed"
+      | California (CCPA/CPRA): We honor rights to access, deletion, correction, opt-out of sale/share, and limit use of sensitive personal information. We do not sell personal information.
+  section id="cookies" class="mb-4 sm:mb-6"
+    h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3" 9) Cookies and similar technologies
+    p class="text-sm sm:text-base text-gray-200 leading-relaxed"
+      | The Software uses essential cookies (session, CSRF). Optional cookies may include preferences, analytics (if enabled), and captcha/anti-spam (if enabled). Where required, consent will be collected and preferences offered.
+  section id="security" class="mb-4 sm:mb-6"
+    h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3" 10) Security
+    p class="text-sm sm:text-base text-gray-200 leading-relaxed"
+      | We employ administrative, technical, and organizational measures appropriate to the risk, including password hashing, HTTPS, role-based access controls, rate limiting, and regular updates. No system is perfectly secure; use strong, unique passwords and enable MFA if offered.
+    p class="text-sm sm:text-base text-gray-200 mt-2 sm:mt-3 leading-relaxed"
+      | Operator note: Review deployment hardening (reverse proxy/TLS, secrets, backups, log retention, monitoring). Keep the Software and dependencies up to date.
+  section id="children-privacy" class="mb-4 sm:mb-6"
+    h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3" 11) Children's privacy
+    p class="text-sm sm:text-base text-gray-200 leading-relaxed"
+      | Not intended for children under
+      span class="ml-1 font-semibold" [minimum age, e.g., 13 or 16]
+      | . We do not knowingly collect data from children below the applicable threshold. If you believe a child has provided data, contact us to remove it.
+  section id="third-party-links" class="mb-4 sm:mb-6"
+    h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3" 12) Third-party links and content
+    p class="text-sm sm:text-base text-gray-200 leading-relaxed"
+      | Forum posts may contain links to third-party websites or embedded content. We are not responsible for those sites' privacy practices. Review their policies before interacting.
+  section id="open-source-transparency" class="mb-4 sm:mb-6"
+    h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3" 13) Open-source transparency
+    p class="text-sm sm:text-base text-gray-200 leading-relaxed"
+      | The Software is open source (MIT) and its code is public. This transparency enables review but does not make your personal data public. Only information you choose to publish (e.g., posts) is public by design.
+  section id="operator-specific-options" class="mb-4 sm:mb-6"
+    h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3" 14) Operator-specific options & toggles
+    p class="text-sm sm:text-base text-gray-200 mb-2 sm:mb-3"
+      | State what's enabled:
+    ul class="list-disc pl-4 sm:pl-6 space-y-1 sm:space-y-2 text-sm sm:text-base text-gray-200"
+      li class="leading-relaxed" Authentication: Devise (email/password) [Enabled/Disabled]; OAuth (Google) [Enabled/Disabled].
+      li class="leading-relaxed" Email delivery: [Provider]; opens/clicks tracking [On/Off].
+      li class="leading-relaxed" Anti-spam: Invisible captcha [Enabled/Disabled].
+      li class="leading-relaxed" Error tracking:
+        span class="ml-2 font-semibold" [Provider] [Enabled/Disabled].
+      li class="leading-relaxed" Analytics:
+        span class="ml-2 font-semibold" [Tool] [Enabled/Disabled]; IP anonymization [On/Off].
+      li class="leading-relaxed" CDN/object storage:
+        span class="ml-2 font-semibold" [Provider]; region [Region].
+  section id="contact-us" class="mb-4 sm:mb-6"
+    h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3" 15) Contact us
+    p class="text-sm sm:text-base text-gray-200 leading-relaxed"
+      | For privacy questions or requests, contact:
+      span class="ml-2 font-semibold break-all" [privacy email]
+      | . If we cannot resolve your concern, you may contact your local data protection authority.
+  section id="changes-to-policy" class="mb-4 sm:mb-6"
+    h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3" 16) Changes to this policy
+    p class="text-sm sm:text-base text-gray-200 leading-relaxed"
+      | We may update this Privacy Policy from time to time. We will post the new version with an updated Effective date and, if changes are material, provide additional notice.
+  section id="jurisdiction-specific-addenda" class="mb-4 sm:mb-6"
+    h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3" 17) Jurisdiction-specific addenda (optional)
+    p class="text-sm sm:text-base text-gray-200 leading-relaxed"
+      | Add region-specific disclosures (e.g., EEA/UK, California, Brazil, Canada).
+  section id="data-map" class="mb-4 sm:mb-6"
+    h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mb-3 sm:mb-4" Appendix A - Data map (example for Operators)
+    p class="text-sm sm:text-base text-gray-200 mb-2 sm:mb-3" Example mapping of data categories, sources, purposes and retention.
+    div class="overflow-x-auto rounded-md border border-gray-200 mx-2"
+      - data_categories = [ \
+        ["Account", "email, username, password hash, roles", "User sign-in, profile", "account management, authentication", "contract/legitimate interests", "account lifetime + [X]"],
+        ["OAuth", "profile name, email", "IdP sign-in consent/contract", "account management", "contract/consent", "account lifetime"],
+        ["Content", "posts, replies, uploads", "User forum activity", "forum functionality", "contract/legitimate interests", "per forum policy"],
+        ["Logs", "IP, UA, timestamps", "device/server", "device, security, ops", "legitimate interests", "30-180 days"],
+        ["Notifications", "email, delivery status", "Email provider", "transactional emails", "contract/legitimate interests", "per provider"],
+        ["Anti-spam", "captcha token, risk score", "Captcha provider", "abuse prevention", "legitimate interests", "minimal, short-term"] \
+      ]
+      table class="min-w-full divide-y divide-gray-200 text-xs sm:text-sm"
+        thead
+          tr class="[&_th]:px-2 sm:[&_th]:px-3 [&_th]:py-2 [&_th]:text-left [&_th]:font-medium [&_th]:text-gray-200"
+            th class="w-1/6" Data Category
+            th class="w-1/6" Examples
+            th class="w-1/6" Source
+            th class="w-1/6" Purpose
+            th class="w-1/6" Legal Basis
+            th class="w-1/6" Retention
+        tbody class="divide-y divide-gray-200"
+          - data_categories.each do |category, examples, source, purpose, legal_basis, retention|
+            tr class="[&_td]:px-2 sm:[&_td]:px-3 [&_td]:py-2 [&_td]:align-top [&_td]:break-words"
+              td class="text-xs sm:text-sm" = category
+              td class="text-xs sm:text-sm" = examples
+              td class="text-xs sm:text-sm" = source
+              td class="text-xs sm:text-sm" = purpose
+              td class="text-xs sm:text-sm" = legal_basis
+              td class="text-xs sm:text-sm" = retention

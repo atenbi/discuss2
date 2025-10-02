@@ -1,0 +1,74 @@
+/* Slim-Select customizations */
+@import url("https://unpkg.com/slim-select@latest/dist/slimselect.css");
+
+.ss-content .ss-list .ss-option:hover,
+.ss-content .ss-list .ss-option.ss-highlighted,
+.ss-content .ss-list .ss-option:not(.ss-disabled).ss-selected {
+  background-color: rgb(240 249 255) !important;
+  color: black !important;
+}
+
+.ss-multi-selected .ss-values .ss-value {
+  background-color: rgb(240 249 255) !important;
+  color: white !important;
+}
+
+.ss-main,
+.ss-content {
+  border-radius: 0 !important;
+}
+
+.ss-main:focus,
+.ss-content:focus,
+.ss-search input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Dark mode styles for Slim Select */
+.dark .ss-main {
+  color: #e5e7eb !important;
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+}
+
+.dark .ss-content {
+  background-color: #374151 !important;
+  color: #e5e7eb !important;
+  border-color: #4b5563 !important;
+}
+
+.dark .ss-search input {
+  background-color: #1f2937 !important;
+  color: #e5e7eb !important;
+  border-color: #4b5563 !important;
+}
+
+.dark .ss-content .ss-list .ss-option {
+  color: #e5e7eb !important;
+}
+
+.dark .ss-content .ss-list .ss-option:hover,
+.dark .ss-content .ss-list .ss-option.ss-highlighted,
+.dark .ss-content .ss-list .ss-option:not(.ss-disabled).ss-selected {
+  background-color: #1f2937 !important;
+  color: #e5e7eb !important;
+}
+
+.dark .ss-multi-selected {
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+}
+
+.dark .ss-multi-selected .ss-values .ss-value {
+  background-color: #1f2937 !important;
+  color: #e5e7eb !important;
+}
+
+.dark .ss-arrow {
+  border-color: #e5e7eb transparent transparent !important;
+}
+
+.dark .ss-add {
+  background-color: #1f2937 !important;
+}

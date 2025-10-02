@@ -1,0 +1,25 @@
+div class="flex flex-col justify-center items-center mt-8" role="main" aria-label="Password reset page"
+  div class="w-[20rem] bg-white dark:bg-gray-800 rounded-lg shadow-md border dark:border-gray-700 sm:w-[28rem] xl:p-0" role="region" aria-label="Password change form"
+    div class="p-6 sm:p-8"
+      = render "shared/error_messages", resource: resource
+      h1 class="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-2xl mb-6" role="banner"
+        | Change your password
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "space-y-4 md:space-y-6", "data-turbo" => "false", "aria-label" => "Password change form" }) do |f|
+        = f.hidden_field :reset_password_token
+        div
+          = f.label :password, "New password", class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+          - if @minimum_password_length
+            span class="text-xs text-gray-500 dark:text-gray-400 mb-1 block" id="password-requirements" role="note"
+              = "#{@minimum_password_length} characters minimum"
+          = f.password_field :password, autofocus: true, autocomplete: "new-password", placeholder: "New password", class: "bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg focus:ring-sky-600 focus:border-sky-600 block w-full p-2.5", "aria-required" => "true", "aria-describedby" => ("password-requirements" if @minimum_password_length)
+        div
+          = f.label :password_confirmation, "Confirm new password", class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+          = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm new password", class: "bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg focus:ring-sky-600 focus:border-sky-600 block w-full p-2.5", "aria-required" => "true"
+        div class="mt-6"
+          = f.submit "Change my password", class: "w-full text-white cursor-pointer bg-cyan-500 hover:bg-cyan-600 focus:ring focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-colors", "aria-label" => "Submit password change"
+      div class="relative flex items-center justify-center w-full mt-6 mb-4" role="separator" aria-label="Alternative options"
+        div class="border-t border-gray-300 dark:border-gray-600 w-full"
+        span class="absolute bg-white dark:bg-gray-800 px-3 text-sm text-gray-500 dark:text-gray-400" or
+      div class="space-y-3" role="navigation" aria-label="Authentication links"
+        = link_to new_user_session_path, class: "flex items-center justify-center w-full p-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center", "aria-label" => "Go to log in page" do
+          span class="mx-auto font-medium" Log in

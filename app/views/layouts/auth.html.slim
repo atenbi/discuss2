@@ -1,0 +1,25 @@
+doctype html
+html lang="en"
+  head
+    title = content_for(:title) || "discuss²"
+    meta name="viewport" content="width=device-width,initial-scale=1"
+    meta name="apple-mobile-web-app-capable" content="yes"
+    meta name="mobile-web-app-capable" content="yes"
+    = render_meta_tags
+    = csrf_meta_tags
+    = csp_meta_tag
+    = yield :head
+    = render "layouts/favicons"
+    link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    = stylesheet_link_tag "tailwind", "data-turbo-track": "reload"
+    = stylesheet_link_tag :app, "data-turbo-track": "reload"
+    = javascript_importmap_tags
+		= render "shared/google_tag_manager_head"
+	body class="bg-white dark:bg-gray-900" data-controller="theme"
+		= render "shared/flash_messages"
+    = render "shared/google_tag_manager_body"
+    header role="banner" class="mt-8 flex justify-center items-center"
+      = link_to "discuss²", forum_topics_path, class: "font-bold text-5xl font-serif dark:text-white", style: "font-family: Georgia;", "aria-label": "Site logo"
+    main role="main"
+      = yield
+    = render "shared/cookie_banner"

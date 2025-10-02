@@ -1,0 +1,7 @@
+div class="flex items-center" role="banner" aria-label="User profile header"
+  = render Shared::AvatarComponent.new(username: user.username, bg_color: user.avatar_bg_color)
+  div class="ml-4"
+    h1 class="text-2xl font-bold text-gray-800 dark:text-white" id="profile-username" = user.username
+    p class="text-sm text-gray-600 dark:text-gray-400" aria-describedby="profile-username"
+      | Member since 
+      time datetime=user.created_at.iso8601 = user.created_at.strftime("%B %d, %Y")

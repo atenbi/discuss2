@@ -1,0 +1,16 @@
+- if user_signed_in?
+  h2 class="text-xl font-bold text-sky-900 dark:text-sky-400 mb-4" role="heading" aria-level="2" Your Reply
+  = form_with model: post, url: forum_topic_posts_path(topic), local: true, "aria-label" => "Reply to topic" do |f|
+    = invisible_captcha
+    = f.hidden_field :topic_id, value: topic.id
+    = f.label :content, class: "sr-only block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+    = f.text_area :content, rows: 6, class: "block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 shadow-sm focus:ring-sky-600 focus:border-sky-600", required: true, "aria-required" => "true", "aria-describedby" => "reply-content-help", "aria-label" => "Your reply content"
+    span class="text-xs dark:text-gray-400" id="reply-content-help" role="note"
+      b class="dark:text-gray-300" Note: 
+      | You can format your posts using 
+      = link_to "markdown", "https://daringfireball.net/projects/markdown/syntax", target: "_blank", rel: "noopener noreferrer", class: "font-medium hover:underline dark:text-sky-400", "aria-label" => "Learn about Markdown formatting syntax (opens in new tab)"
+      |  format.
+    = f.submit "Send Message", class: "btn btn-primary mt-3", "aria-label" => "Submit your reply"
+- else
+  div class="flex" role="region" aria-label="Authentication required"
+    = link_to "Reply", new_user_session_path, class: "btn btn-primary", "aria-label" => "Sign in to reply to this topic"

@@ -1,0 +1,80 @@
+div class="container mx-auto px-4 sm:px-6 py-6" role="main" aria-label="FAQ page content"
+  div class="max-w-4xl mx-auto rounded-lg p-4 sm:p-6"
+    div class="flex flex-col sm:flex-row sm:items-baseline gap-2 mb-6 border-b dark:border-gray-700 pb-4" role="banner"
+      h1 class="text-2xl sm:text-3xl font-bold mt-5 dark:text-white" Frequently Asked Questions
+      span class="text-xl sm:text-3xl dark:text-gray-300" aria-label="Subtitle" (FAQ)
+    div class="space-y-6 sm:space-y-8 mb-8" role="region" aria-label="FAQ content"
+      div class="border-b border-gray-200 dark:border-gray-700 pb-6"
+        h2 class="text-xl sm:text-2xl font-semibold mb-3 flex items-center dark:text-white"
+          |❓ What is discuss²?
+        p class="text-sm sm:text-base dark:text-gray-300"
+          span class="font-bold dark:text-white" discuss² 
+          span is an open-source forum platform built for modern web communities. It features a clean interface, powerful tools for discussion and moderation, and a developer-friendly codebase. Inspired by the layout of the OpenAI Community Forum, it's built to be fast, intuitive, and easy to self-host.
+      div class="border-b border-gray-200 dark:border-gray-700 pb-6"
+        h2 class="text-2xl font-semibold mb-3 flex items-center dark:text-white"
+          | 🛠️ Is discuss² open source?
+        p class="dark:text-gray-300"
+					span Yes! discuss² is fully open source and released under the MIT license. You can view, use, modify, or contribute to the code via our 
+					= link_to "GitHub repository", "https://github.com/atenbi/discuss2", class: "text-sky-600 dark:text-sky-400 hover:underline", target: "_blank", "aria-label" => "Visit discuss² GitHub repository"
+					span .
+      div class="border-b border-gray-200 dark:border-gray-700 pb-6"
+        h2 class="text-2xl font-semibold mb-3 flex items-center dark:text-white"
+          | 💻 How do I install discuss²?
+        div class="text-gray-700 dark:text-gray-300"
+          p class="mb-2" 
+            span You can install discuss² by cloning the repository from GitHub and following the installation instructions in the 
+            = link_to "README.md", "https://github.com/atenbi/discuss2/blob/main/README.md", class: "text-sky-600 dark:text-sky-400 hover:underline", target: "_blank", "aria-label" => "View installation instructions in README"
+            span  file. A basic installation typically involves:
+          ul class="list-disc pl-5 space-y-1 mb-2" role="list" aria-label="Installation steps"
+            li Setting up a database
+            li Installing dependencies
+            li Running the server
+      div class="border-b border-gray-200 dark:border-gray-700 pb-6"
+        h2 class="text-2xl font-semibold mb-3 flex items-center dark:text-white"
+          | 🌍 Can I self-host discuss²?
+        p class="dark:text-gray-300" 
+					| Absolutely. discuss² is designed to be lightweight and easy to deploy on your own infrastructure - whether it's a VPS, cloud instance, or local server.
+      div class="border-b border-gray-200 dark:border-gray-700 pb-6"
+        h2 class="text-2xl font-semibold mb-3 flex items-center dark:text-white"
+          | 🎨 Can I customize the look and feel?
+        p class="dark:text-gray-300" Yes. The UI is built with modular components and supports theme customization. You can change colors, layout, logos, and even extend the front-end to suit your brand or community style.
+      div class="border-b border-gray-200 dark:border-gray-700 pb-6"
+        h2 class="text-2xl font-semibold mb-3 flex items-center dark:text-white"
+          | 🔌 Does discuss² support plugins or extensions?
+        p class="dark:text-gray-300" 
+					| Not yet - but plugin support is on the roadmap. For now, you can fork the project or build features directly into your deployment. We're working toward a stable plugin API in future releases.
+      div class="border-b border-gray-200 dark:border-gray-700 pb-6"
+        h2 class="text-2xl font-semibold mb-3 flex items-center dark:text-white"
+          | 🔐 Is discuss² secure?
+        p class="dark:text-gray-300" We take security seriously. discuss² follows best practices for user authentication, input validation, and permission handling. That said, as an open-source project, we also rely on the community to help identify and patch potential issues quickly.
+      div class="border-b border-gray-200 dark:border-gray-700 pb-6"
+        h2 class="text-2xl font-semibold mb-3 flex items-center dark:text-white"
+          | 📦 What's on the roadmap?
+        div class="text-gray-700 dark:text-gray-300"
+          p class="mb-2" Upcoming features include:
+          ul class="list-disc pl-5 space-y-1 mb-2" role="list" aria-label="Upcoming features"
+            li Plugin and extension support
+            li Richer notifications (email, in-app)
+            li Webhooks & API enhancements
+            li Mobile-optimized UI improvements
+            li Admin panel with advance moderation tools
+          p
+					span You can follow development on our 
+					= link_to "GitHub Projects", "https://github.com/atenbi/discuss2/projects?query=is%3Aopen", class: "text-sky-600 dark:text-sky-400 hover:underline", target: "_blank", "aria-label" => "View discuss² GitHub projects and roadmap"
+					span< or check out the public roadmap.
+      div class="border-b border-gray-200 dark:border-gray-700 pb-6"
+        h2 class="text-2xl font-semibold mb-3 flex items-center dark:text-white"
+          | 🤝 How can I contribute?
+        p class="dark:text-gray-300"
+				span> We welcome contributions! Whether it's fixing bugs, improving documentation, or building new features, we'd love your help. Start by checking out the
+				= link_to "Contributing Guide", "https://github.com/atenbi/discuss2/blob/main/README.md#contributing", class: "text-sky-600 dark:text-sky-400 hover:underline", target: "_blank", "aria-label" => "View contributing guide"
+				span< in the repo.
+      div class="pb-6"
+        h2 class="text-2xl font-semibold mb-3 flex items-center dark:text-white"
+          | 💬 Is there a community or support channel?
+        p class="dark:text-gray-300"
+					span For support, you can 
+					= link_to "open issues on GitHub", "https://github.com/atenbi/discuss2/issues", class: "text-sky-600 dark:text-sky-400 hover:underline", target: "_blank", "aria-label" => "Open GitHub issues"
+					span<> or contact us via
+					= link_to "email", "mailto:discuss2@atenbi.com", class: "text-sky-600 dark:text-sky-400 hover:underline", "aria-label" => "Send email to discuss2@atenbi.com"
+					span< if you're interested in contributing or deploying discuss², we're here to help.

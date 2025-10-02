@@ -1,0 +1,14 @@
+div data-controller="custom-select" class="relative #{css_width}"
+  = hidden_field_tag form_name, selected_slug_or_id, data: { custom_select_target: "input" }
+  - if label.present?
+    label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="#{form_name}" = label
+  div data-action="click->custom-select#toggle" class="flex justify-between items-center w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 py-2 px-3 shadow-sm sm:text-sm cursor-pointer dark:text-gray-200" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-label="#{aria_label if aria_label.present?}" aria-labelledby="#{form_name}-label" data-custom-select-target="trigger" tabindex="0"
+    span data-custom-select-target="selected" class="truncate" = selected_label
+    span data-custom-select-target="arrowIcon" class="material-icons select-none dark:text-gray-300" data-closed-icon="#{@arrow_icon}" data-open-icon="#{@open_arrow_icon}" aria-hidden="true" = @arrow_icon
+  ul data-custom-select-target="list" class="hidden absolute z-10 w-full max-h-56 overflow-auto bg-white dark:bg-gray-700 py-1 text-base shadow-lg sm:text-sm dark:text-gray-200 dark:border dark:border-gray-600" role="listbox" aria-labelledby="#{form_name}-label"
+    - if show_remove_filter && selected_slug_or_id.present?
+      li data-custom-select-target="item" data-action="click->custom-select##{choose_action}" data-id="" class="cursor-pointer select-none py-2 px-4 hover:bg-sky-50 dark:hover:bg-gray-600 text-red-600 dark:text-red-400 font-bold" role="option" aria-selected="false"
+        | remove filter
+    - items.each do |item|
+      li data-custom-select-target="item" data-action="click->custom-select##{choose_action}" data-id="#{item.slug_or_id}" class="cursor-pointer select-none py-2 px-4 hover:bg-sky-50 dark:hover:bg-gray-600 #{'bg-sky-50 dark:bg-gray-600' if item.slug_or_id.to_s == selected_slug_or_id.to_s}" role="option" aria-selected="#{item.slug_or_id.to_s == selected_slug_or_id.to_s ? 'true' : 'false'}"
+        = render_custom_select_item(item)

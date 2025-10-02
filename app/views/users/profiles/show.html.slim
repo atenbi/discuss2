@@ -1,0 +1,45 @@
+div class="container mx-auto p-6" role="main" aria-label="User profile page"
+  div class="flex items-center justify-between mb-6"
+    = render Profile::HeaderComponent.new(user: @user)
+    - if current_user == @user
+      = link_to "Edit Profile", edit_profile_path, class: "btn btn-light-gray", "aria-label" => "Edit your profile"
+  div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6" role="region" aria-label="User statistics"
+    div class="bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-md p-4 text-center"
+      h2 class="text-xl font-bold text-sky-900 dark:text-sky-400" = @topics_count
+      p class="text-sm text-gray-500 dark:text-gray-400" Topics Created
+    div class="bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-md p-4 text-center"
+      h2 class="text-xl font-bold text-sky-600 dark:text-sky-400" = @posts_count
+      p class="text-sm text-gray-500 dark:text-gray-400" Posts Created
+  div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"
+    div role="region" aria-label="User topics"
+      h2 class="text-xl font-bold mb-4 text-gray-700 dark:text-gray-300"
+        = profile_topics_header(@user)
+      - if @topics.any?
+        div class="space-y-4 mb-2" role="list" aria-label="Topics created by user"
+          - @topics.each do |topic|
+            div class="border-2 border-sky-800 dark:border-sky-600 rounded-md p-4 dark:bg-gray-800" role="listitem"
+              h3 class="text-lg font-semibold text-sky-800 dark:text-sky-400"
+                = link_to topic.title.truncate(80), forum_topic_path(topic), class: "hover:underline", "aria-label" => "View topic: #{topic.title}"
+              p class="text-sm text-gray-500 dark:text-gray-400 flex items-center"
+                span class="material-icons mr-1" aria-hidden="true" schedule
+                = "#{time_ago_in_words(topic.created_at)} ago"
+              p class="mt-2 text-gray-700 dark:text-gray-300" = topic.content.truncate(80)
+        == pagy_nav(@pagy_topics)
+      - else
+        p class="text-gray-500 dark:text-gray-400" No topics available.
+    div role="region" aria-label="User posts"
+      h2 class="text-xl font-bold mb-4 text-gray-700 dark:text-gray-300"
+        = profile_posts_header(@user)
+      - if @posts.any?
+        div class="space-y-4 mb-2" role="list" aria-label="Posts created by user"
+          - @posts.each do |post|
+            div class="border-2 border-gray-300 dark:border-gray-600 rounded-md p-4 dark:bg-gray-800" role="listitem"
+              h3 class="text-lg font-semibold text-sky-800 dark:text-sky-400"
+                = link_to post.topic.title.truncate(80), forum_topic_path(post.topic), class: "hover:underline", "aria-label" => "View post in topic: #{post.topic.title}"
+              p class="text-sm text-gray-500 dark:text-gray-400 flex items-center"
+                span class="material-icons mr-1" aria-hidden="true" schedule
+                = "#{time_ago_in_words(post.created_at)} ago"
+              p class="mt-2 text-gray-700 dark:text-gray-300" = post.content.truncate(80)
+        == pagy_nav(@pagy_posts)
+      - else
+        p class="text-gray-500 dark:text-gray-400" No posts available.

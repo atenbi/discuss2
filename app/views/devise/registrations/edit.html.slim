@@ -1,0 +1,49 @@
+div role="main" aria-label="Edit user account form"
+  h2 role="banner" aria-label="Edit account page title"
+    | Edit 
+    = resource_name.to_s.humanize
+
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, "aria-label" => "Edit account form" }) do |f|
+    = render "devise/shared/error_messages", resource: resource
+
+    .field
+      = f.label :email
+      = f.email_field :email, autofocus: true, autocomplete: "email", "aria-required" => "true"
+   
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      div role="status" aria-live="polite"
+        = "Currently waiting confirmation for: #{resource.unconfirmed_email}"
+
+    .field
+      = f.label :password  
+        i aria-label="Password change instructions"
+          | (leave blank if you don't want to change it)
+      = f.password_field :password, autocomplete: "new-password", "aria-describedby" => "password-help"
+      - if @minimum_password_length
+        br
+        em id="password-help" aria-label="Password requirements"
+          = "#{@minimum_password_length} characters minimum"
+
+    .field
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, autocomplete: "new-password"
+
+    .field
+      = f.label :current_password 
+        i aria-label="Current password requirement"
+          | (we need your current password to confirm your changes)
+        br
+      = f.password_field :current_password, autocomplete: "current-password", "aria-required" => "true"
+
+    .actions
+      = f.submit "Update", "aria-label" => "Update account information"
+
+  div role="region" aria-label="Account deletion section"
+    h3
+      | Cancel my account
+
+    div
+      | Unhappy? 
+      = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, "aria-label" => "Delete account permanently"
+
+  = link_to "Back", :back, "aria-label" => "Go back to previous page"

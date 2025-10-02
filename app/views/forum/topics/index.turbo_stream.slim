@@ -1,0 +1,6 @@
+= turbo_stream.append "topics" do
+  = render @topics
+
+= turbo_stream.append "topics" do
+  - if @pagy.next.present?
+    = turbo_frame_tag :pagination, loading: :lazy, src: forum_topics_path(page: @pagy.next, format: :turbo_stream, category: params[:category], tag: params[:tag], q: @ransack_params), page: @pagy.next

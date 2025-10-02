@@ -1,0 +1,50 @@
+aside data-controller="scroll-preservation" data-action="turbo:before-cache@document->scroll-preservation#preserveScroll turbo:render@document->scroll-preservation#restoreScroll" class="flex flex-col h-[calc(100vh-3.75rem)] lg:h-[calc(100vh-5rem)] w-64 p-5 shadow-md bg-white dark:bg-gray-900 z-50 lg:z-0 fixed lg:sticky top-16 lg:top-20" role="navigation" aria-label="Sidebar navigation"
+  div id="sidebar-scroll" data-scroll-preservation-target="scrollable" class="flex-grow pr-1 overflow-y-auto custom-scroll"
+    ul class="space-y-4 text-sm dark:text-gray-200" role="list" aria-label="Navigation menu"
+      li class="pb-4 border-b border-gray-300 dark:border-gray-700"
+        = link_to forum_topics_path, class: "block px-4 py-2 rounded-lg dark:text-gray-400 #{active_link_class(forum_topics_path)} transition-all duration-300 outline-none dark:hover:bg-gray-700", "aria-label": "Topics" do
+          = render "shared/icon_with_text", icon: "topic", text: "Topics"
+      li class="pb-4 border-b border-gray-300 dark:border-gray-700"
+        div data-controller="dropdown" data-dropdown-should-hide-on-outside-click-value="false" data-dropdown-should-save-state-value="true" data-dropdown-unique-key-value="sidebarCategories" data-dropdown-open-by-default-value="true"
+          button type="button" class="block w-full px-4 py-2 text-left rounded-lg text-gray-700 dark:text-gray-200 hover:bg-neutral-200 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-all duration-300 outline-none" data-action="click->dropdown#toggle" aria-expanded="true" aria-controls="categories-menu" aria-label="Toggle categories menu"
+            div class="flex items-center"
+              = render "shared/icon_with_text", icon: "category", text: "Categories"
+              span class="ml-2 material-icons" data-dropdown-target="arrowIcon"
+                | keyboard_arrow_right
+          ul class="mt-2 space-y-1 text-sm dark:text-gray-300" data-dropdown-target="menu" id="categories-menu" role="menu" aria-label="Categories"
+            - sidebar_categories.each do |category|
+              li class="block px-4 py-2 rounded-lg #{active_item_class(category.slug, params[:category])} transition-all duration-300 outline-none dark:hover:bg-gray-700" role="menuitem"
+                = link_to forum_topics_path(category: category), "aria-label": "View topics in #{category.name} category" do
+                  div class="flex items-center space-x-2"
+                    div style="width: 12px; height: 12px; background-color: #{category.bg_color};"
+                    div class="dark:text-gray-400" = category.name
+            li class="block px-3 py-2 rounded-lg #{active_link_class(forum_categories_path)} text-gray-700 dark:text-gray-300 hover:bg-neutral-200 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-all duration-300 outline-none" role="menuitem"
+              = link_to forum_categories_path, "aria-label": "View all categories" do
+                = render "shared/icon_with_text", icon: "menu", text: "All Categories"
+      li class="pb-4 border-b border-gray-300 dark:border-gray-700"
+        div data-controller="dropdown" data-dropdown-should-hide-on-outside-click-value="false" data-dropdown-should-save-state-value="true" data-dropdown-unique-key-value="sidebarTags" data-dropdown-open-by-default-value="true"
+          button type="button" class="block w-full px-4 py-2 text-left rounded-lg text-gray-700 dark:text-gray-200 hover:bg-neutral-200 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-all duration-300 outline-none" data-action="click->dropdown#toggle" aria-expanded="true" aria-controls="tags-menu" aria-label="Toggle tags menu"
+            div class="flex items-center"
+              = render "shared/icon_with_text", icon: "tag", text: "Tags"
+              span class="ml-2 material-icons" data-dropdown-target="arrowIcon"
+                | keyboard_arrow_right
+          ul class="mt-2 space-y-1 text-sm dark:text-gray-300" data-dropdown-target="menu" id="tags-menu" role="menu" aria-label="Tags"
+            - sidebar_tags.each do |tag|
+              li class="block px-4 py-2 rounded-lg #{active_item_class(tag.slug, params[:tag])} transition-all duration-300 outline-none dark:hover:bg-gray-700" role="menuitem"
+                = link_to forum_topics_path(tag: tag), "aria-label": "View topics tagged with #{tag.name}" do
+                  div class="flex items-center space-x-2"
+                    span class="material-icons text-base" sell
+                    span class="dark:text-gray-400" = tag.name
+            li class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 #{active_link_class(forum_tags_path)} hover:bg-neutral-200 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-all duration-300 outline-none" role="menuitem"
+              = link_to forum_tags_path, "aria-label": "View all tags" do
+                = render "shared/icon_with_text", icon: "menu", text: "All Tags"
+      li
+        = link_to about_path, class: "block px-4 py-2 rounded-lg dark:text-gray-400 #{active_link_class(about_path)} transition-all duration-300 outline-none dark:hover:bg-gray-700", "aria-label": "About page" do
+          = render "shared/icon_with_text", icon: "info", text: "About"
+      li
+        = link_to faq_path, class: "block px-4 py-2 rounded-lg dark:text-gray-400 #{active_link_class(faq_path)} transition-all duration-300 outline-none dark:hover:bg-gray-700", "aria-label": "Frequently asked questions" do
+          = render "shared/icon_with_text", icon: "help", text: "FAQ"
+  footer data-controller="theme" class="mt-4 border-t border-gray-300 dark:border-gray-700 flex justify-end" role="contentinfo" aria-label="Theme controls"
+    button type="button" class="hover:bg-neutral-200 dark:hover:bg-gray-700 px-3 py-2 rounded-sm" data-action="theme#toggle" aria-label="Toggle light and dark theme"
+      span class="material-icons text-sm dark:text-gray-400" data-theme-target="icon"
+        | light_mode

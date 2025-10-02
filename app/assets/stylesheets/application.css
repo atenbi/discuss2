@@ -1,0 +1,14 @@
+@import "components/slim_select";
+
+html {
+  scrollbar-gutter: stable;
+}
+
+.custom-scroll::-webkit-scrollbar {
+	display: none;
+}
+  
+.custom-scroll {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}

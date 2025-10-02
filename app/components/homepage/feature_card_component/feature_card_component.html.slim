@@ -1,0 +1,7 @@
+div class="flex flex-col items-center lg:items-start gap-5 w-full lg:max-w-[390px]" role="article" aria-labelledby="feature-#{feature.title.parameterize}"
+  div class="h-[384px] w-full max-w-[335px] sm:max-w-full lg:max-w-[390px] bg-cover bg-center rounded-[20px]" style="background-image: url('#{asset_path(feature.img_url)}')" role="img" aria-label="#{feature.title} feature illustration"
+  div class="flex px-2 w-full max-w-[335px] sm:max-w-full lg:max-w-[390px] flex-col items-start gap-2.5"
+    h3 id="feature-#{feature.title.parameterize}" class="text-white text-[20px] md:text-2xl leading-[120%] tracking-[-0.6px] md:tracking-[-0.72px]"
+      | #{feature.title}
+    span class="text-white text-sm md:text-base opacity-60 leading-[140%] md:leading-[120%] tracking-[-0.14px] md:tracking-[-0.48px]" aria-describedby="feature-#{feature.title.parameterize}"
+      | #{feature.description}

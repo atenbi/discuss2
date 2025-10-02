@@ -1,0 +1,24 @@
+- row_classes = topic.pinned? ? "bg-emerald-50 dark:bg-gray-700 border-b dark:border-gray-600" : "bg-white dark:bg-gray-800 border-b dark:border-gray-700"
+
+tr id=dom_id(topic) class=row_classes
+  th class="px-6 py-4 font-medium text-gray-900 dark:text-gray-100 whitespace-nowrap"
+    div class="inline-flex items-baseline space-x-1"
+      - if topic.pinned?
+        span class="text-sm align-baseline material-icons dark:text-gray-200" push_pin
+      = link_to topic.title.truncate(80), forum_topic_path(topic), data: { turbo: false }, class: "hover:underline dark:text-gray-200"
+    br
+    div class="text-xs text-gray-500 dark:text-gray-400 flex flex-col lg:flex-row items-start lg:items-center space-x-2 w-4/10"
+      div class="flex flex-row items-center space-x-1"
+        div style="width: 12px; height: 12px; background-color: #{topic.category.bg_color};"
+        div = link_to topic.category.name, forum_topics_path(category: topic.category.slug), data: { turbo: false }, class: "hover:underline dark:text-gray-300"
+      - if topic.tags.any?
+        div class="ml-2 flex flex-wrap text-[11px]"
+          - topic.tags.each_with_index do |tag, index|
+            span
+              = link_to tag.name, forum_topics_path(tag: tag.slug), data: { turbo: false }, class: "text-sky-600 dark:text-sky-400 hover:underline"
+              - if index < topic.tags.size - 1
+                span class="text-gray-500 dark:text-gray-400 mr-1" ,
+  td class="px-6 py-4 dark:text-gray-300 w-1/5" = render Topics::AvatarsStackComponent.new(users_arr: topic.participants.limit(5))
+  td class="px-6 py-4 dark:text-gray-300 w-1/10" = topic.posts_count
+  td class="px-6 py-4 dark:text-gray-300 w-1/10" = topic.num_views
+  td class="px-6 py-4 dark:text-gray-300 w-1/5" = "#{time_ago_in_words(topic.created_at)} ago"

@@ -1,0 +1,30 @@
+div class="form-container dark:bg-gray-800 p-6 shadow-md border dark:border-gray-700 w-full max-w-3xl mx-auto" role="main" aria-label="Topic form"
+  = render "shared/error_messages", resource: @topic
+  = form_with model: @topic, method: form_method, local: true, "aria-label" => "Create or edit topic" do |f|
+    = invisible_captcha
+    div class="mb-4"
+      - category_items = Shared::CustomSelectComponent.category_items(slug_or_id: :id)
+      = render Shared::CustomSelectComponent.new(label: "Select Category:*", form_name: "forum_topic[category_id]", items: category_items[:items], default_item: category_items[:default_item], auto_submit: false, selected_slug_or_id: @selected_category_id, arrow_icon: "keyboard_arrow_down", open_arrow_icon: "keyboard_arrow_up")
+    div class="mb-4"
+      = f.label :tag_ids, "Select Tags (Max 5):", class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+      = f.select :tag_ids, Forum::Tag.pluck(:name, :id), {}, { multiple: true, data: { controller: 'slim-select' }, "aria-label" => "Select up to 5 tags for this topic" }
+    div class="mb-4"
+      = f.label :title, 'Title*', class: 'block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1'
+      = f.text_field :title, class: 'block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 shadow-sm focus:ring-sky-600 focus:border-sky-600', required: true, "aria-required" => "true", "aria-describedby" => "title-help"
+    div class="mb-4"
+      = f.label :content, 'Content*', class: 'block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1'
+      = f.text_area :content, class: 'block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 shadow-sm focus:ring-sky-600 focus:border-sky-600', rows: 6, required: true, "aria-required" => "true", "aria-describedby" => "content-help"
+      span class="text-xs dark:text-gray-400" id="content-help" role="note"
+        b class="dark:text-gray-300" Note: 
+        | You can format content using 
+        = link_to "markdown", "https://daringfireball.net/projects/markdown/syntax", target: "_blank", rel: "noopener noreferrer", class: "font-medium hover:underline dark:text-sky-400", "aria-label" => "Learn about Markdown formatting syntax (opens in new tab)"
+        |  format.
+    div class="flex justify-between mt-6"
+      = f.button :submit, class: 'inline-flex items-center btn btn-primary', "aria-label" => "Submit topic" do
+        span = button_text
+      - if @topic.persisted?
+        = link_to forum_topic_path(@topic), class: 'btn btn-light-gray', "aria-label" => "Go back to topic" do
+          span Back to topic
+      - else
+        = link_to forum_topics_path, class: 'btn btn-light-gray', "aria-label" => "Go back to homepage" do
+          span Back to homepage

@@ -1,0 +1,20 @@
+div class="container mx-auto px-4 sm:px-6 py-6" role="main" aria-label="About page content"
+  div class="max-w-4xl mx-auto rounded-lg p-4 sm:p-6"
+    div class="flex flex-col sm:flex-row sm:items-baseline gap-2 mb-6 border-b dark:border-gray-700 pb-4" role="banner"
+      h1 class="text-2xl sm:text-3xl font-bold mt-5 dark:text-white" Welcome to discuss²
+      span class="text-xl sm:text-3xl dark:text-gray-300" aria-label="Subtitle" -a modern, open-source community platform.
+    p class="mb-4 text-sm sm:text-base dark:text-gray-300" discuss² is a sleek, lightweight forum software designed to power thoughtful conversations online. Inspired by platforms like the OpenAI Community Forum, it combines a clean interface with powerful tools that make it easy to create, manage, and grow your community.
+    p class="mb-8 text-sm sm:text-base dark:text-gray-300" Whether you're building a space for developers, enthusiasts, support discussions, or open collaboration - discuss² helps you do it with style and simplicity.
+    h2 class="text-xl sm:text-2xl font-bold mb-6 dark:text-white" ✨ Why discuss²?
+    div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mb-8" role="list" aria-label="Features list"
+      - @features.each do |feature|
+        = render Pages::FeatureCardComponent.new(title: feature[:title], description: feature[:description])
+    h2 class="text-xl sm:text-2xl font-bold mb-4 dark:text-white" 💡 For Developers, By Developers
+    p class="mb-4 text-sm sm:text-base dark:text-gray-300" discuss² is designed to be developer-friendly from the ground up. The codebase is clean, modular, and well-documented - making it easy to contribute, extend, or integrate into other projects.
+    p class="mb-8 text-sm sm:text-base dark:text-gray-300" 
+        span> Check out the
+        = link_to "GitHub repository", "https://github.com/atenbi/discuss2", class: "text-sky-600 dark:text-sky-400 hover:underline", "aria-label" => "Visit discuss² GitHub repository"
+        span< to clone, fork, or start contributing today.
+    h2 class="text-xl sm:text-2xl font-bold mb-4 dark:text-white" 🚀 Join the Movement
+    p class="mb-4 text-sm sm:text-base dark:text-gray-300" discuss² isn't just software - it's a growing open-source project backed by a community that believes in open, accessible, and meaningful online discussion.
+    p class="text-sm sm:text-base dark:text-gray-300" Whether you're a developer, community manager, or someone who just loves clean and effective tools, we'd love for you to be part of the journey.

@@ -1,0 +1,16 @@
+footer class="flex flex-col lg:max-w-[1360px] h-[500px] py-10 px-5 lg:p-10 lg:justify-between items-start rounded-[20px] bg-white-5 gap-[100px] lg:gap-0"
+	div class="flex flex-col lg:flex-row items-start gap-10 lg:gap-[228px] w-full"
+		= inline_svg_tag "icons/homepage/logo.svg", class: "flex-shrink-0 max-w-full"
+		div class="flex flex-col items-start gap-5 w-full lg:max-w-[580px] min-w-0"
+			span class="text-white text-sm font-medium leading-[150%] tracking-[-0.42px] break-words"
+				| Whether you're a developer, community manager, or someone who just loves clean and effective tools, we'd love for you to be part of the journey.
+			div class="flex items-center content-center gap-2.5 flex-wrap lg:max-w-[600px] w-full"
+				= link_to "https://github.com/atenbi/discuss2/blob/main/README.md", target: "_blank", class: "btn-white" do
+					span Build your community
+					= inline_svg_tag "icons/homepage/arrow-up-right.svg"
+				= mail_to "discuss2@atenbi.com", "Contact us", class: "btn-ghost"
+				= link_to "Github repository", "https://github.com/atenbi/discuss2", class: "btn-ghost"
+	div class="flex lg:w-full justify-between items-center text-sm text-white  font-medium leading-[120%] tracking-[-0.42px] w-full"
+		span class="opacity-40" discuss² © 2025 All rights reserved
+		div class="flex items-center gap-5"
+			= link_to "Privacy Policy", privacy_policy_path, class: "underline opacity-40 hover:opacity-100 transition-opacity duration-300"

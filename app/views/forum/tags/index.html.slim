@@ -1,0 +1,18 @@
+div class="container mx-auto px-4 py-8" role="main" aria-label="Tags page"
+  h1 class="text-2xl font-bold mb-2 dark:text-white" role="banner" Tags
+
+  div class="mb-6" role="region" aria-label="Sorting options"
+    span class="text-gray-600 dark:text-gray-400" Sort by: 
+    = sort_link(@q, :topics_count, "count", {}, class: "text-blue-500 dark:text-blue-400 hover:underline dark:hover:text-blue-300 ml-1", "aria-label" => "Sort tags by topic count")
+    = sort_link(@q, :name, "name", class: "text-blue-500 dark:text-blue-400 hover:underline dark:hover:text-blue-300 ml-2", "aria-label" => "Sort tags alphabetically by name")
+  
+  h2 class="text-xl font-semibold mb-4 border-b dark:border-gray-700 pb-2 dark:text-gray-200" All tags
+
+  div class="grid grid-cols-1 md:grid-cols-3 gap-6" role="list" aria-label="List of all tags"
+    - @tags.each do |tag|
+      = link_to forum_topics_path(tag: tag.slug), class: "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400", role: "listitem", "aria-label" => "View #{tag.topics_count} topics tagged with #{tag.name}" do
+        span = tag.name
+        span class="text-gray-500 dark:text-gray-500 ml-1" × #{tag.topics_count}
+  - if @pagy.pages > 1
+    div class="mt-8 flex justify-center dark:text-gray-300" role="navigation" aria-label="Pagination"
+      == pagy_nav(@pagy)

@@ -1,0 +1,18 @@
+div class="container mx-auto p-6 space-y-8" role="main" aria-label="Edit profile page"
+  = render Profile::HeaderComponent.new(user: @user)
+  = render "shared/error_messages", resource: @user
+  h2 class="text-2xl font-bold text-gray-800 dark:text-white" Edit Profile
+  = form_with model: @user, url: profile_path, method: :put, local: true, class: "space-y-6", "aria-label" => "Edit profile form" do |f|
+    div
+      = f.label :username, "Username", class: "block text-sm font-medium text-gray-700 dark:text-gray-300"
+      = f.text_field :username, class: "block w-1/2 rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 shadow-sm focus:ring-sky-600 focus:border-sky-600 p-2.5", required: true, "aria-required" => "true"
+    div
+      = f.label :email, "Email", class: "block text-sm font-medium text-gray-700 dark:text-gray-300"
+      = f.email_field :email, class: "block w-1/2 rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 shadow-sm focus:ring-sky-600 focus:border-sky-600 p-2.5", required: true, "aria-required" => "true"
+    div class="flex items-center space-x-4"
+      = f.submit "Change", class: "btn btn-primary", "aria-label" => "Save profile changes"
+      = link_to "Cancel", profile_path, class: "text-sky-600 dark:text-sky-400 hover:text-red-600 dark:hover:text-red-400", "aria-label" => "Cancel editing and return to profile"
+  div
+    = link_to "Change Password", change_password_profile_path, class: "text-sky-600 dark:text-sky-400 hover:underline", "aria-label" => "Go to change password page"
+  div
+    = link_to "Delete Account", soft_delete_profile_path, method: :delete, class: "text-red-600 dark:text-red-400 hover:underline", "aria-label" => "Delete your account permanently", data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }

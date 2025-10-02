@@ -1,0 +1,50 @@
+div class="container mx-auto p-6" role="main" aria-label="Topic details page"
+  h1 class="text-2xl font-bold dark:text-white" = @topic.title
+  div class="flex items-center space-x-2 mb-4" role="region" aria-label="Topic metadata"
+    div style="width: 12px; height: 12px; background-color: #{@topic.category.bg_color};" aria-hidden="true"
+    h3 = link_to @topic.category.name, forum_topics_path(category: @topic.category.slug), data: { turbo: false }, class: "hover:underline dark:text-gray-200", "aria-label" => "View topics in category: #{@topic.category.name}"
+    - if @topic_tags.any?
+        div class="ml-2 flex flex-wrap text-gray-500 dark:text-gray-400 text-[11px]" role="list" aria-label="Topic tags"
+          - @topic_tags.each_with_index do |tag, index|
+            span class="dark:text-gray-400" role="listitem"= tag.name
+            - if index < @topic.tags.size - 1
+              span class="text-gray-500 dark:text-gray-400 mr-1" aria-hidden="true" ,
+  div class="border-2 border-sky-800 dark:border-sky-700 rounded-md p-4 mb-6 dark:bg-gray-800" role="article" aria-label="Topic content"
+    div class="flex space-x-2"
+      - if user_linkable?(@topic.user)
+        = link_to user_path(@topic.user), data: { turbo: false }, class: "cursor-pointer hover:z-10 transition-transform transform hover:scale-110", "aria-label" => "View #{user_display_name(@topic.user)}'s profile" do
+          = render Shared::AvatarComponent.new(username: user_display_name(@topic.user), bg_color: @topic.user.avatar_bg_color)
+      - else
+        = render Shared::AvatarComponent.new(username: user_display_name(@topic.user), bg_color: @topic.user.avatar_bg_color)
+      div class="flex flex-col"
+        p class="font-bold #{user_text_color_classes(@topic.user)}"
+          - if user_linkable?(@topic.user)
+            = link_to user_path(@topic.user), data: { turbo: false }, class: "cursor-pointer hover:underline", "aria-label" => "View #{user_display_name(@topic.user)}'s profile" do
+              = user_display_name(@topic.user)
+          - else
+            span = user_display_name(@topic.user)
+        p class="mt-2 text-sm text-gray-500 dark:text-gray-400 flex items-center"
+          span class="material-icons mr-1 dark:text-gray-400" aria-hidden="true"
+            | schedule
+          = "#{time_ago_in_words(@topic.created_at)} ago"
+    div class="prose dark:prose-invert mt-4 text-gray dark:text-gray-200" 
+      = render_markdown(@topic.content)
+    - if current_user&.has_role?(:admin) || current_user&.has_role?(:moderator)
+      div class="mt-2 flex space-x-2" role="group" aria-label="Moderator actions"
+        = link_to "edit", edit_forum_topic_path(@topic), class: "hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 hover:underline", "aria-label" => "Edit this topic"
+        = link_to "delete", forum_topic_path(@topic), method: :delete, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: "hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 hover:underline", "aria-label" => "Delete this topic"
+      div class="mt-2"
+        - if @topic.pinned?
+          div class="flex items-center space-x-1"
+            span class="text-sm material-icons dark:text-gray-300" aria-hidden="true" push_pin
+            = link_to update_pinned_forum_topic_path(@topic, pin: "false"), data: { "turbo-method": :patch }, class: "hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 hover:underline", "aria-label" => "Unpin this topic" do
+              span Unpin topic
+        - else
+          div class="flex items-center space-x-1"
+            span class="text-sm material-icons dark:text-gray-300" aria-hidden="true" push_pin
+            = link_to update_pinned_forum_topic_path(@topic, pin: "true"), data: { "turbo-method": :patch }, class: "hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 hover:underline", "aria-label" => "Pin this topic" do
+              span Pin topic
+  div class="mt-6" role="region" aria-label="Topic posts"
+    = render partial: "forum/posts/post", collection: @posts, as: :post
+  div class="mt-6"
+    = render "forum/posts/post_form", post: @post, topic: @topic

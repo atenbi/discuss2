@@ -1,0 +1,40 @@
+service: your-app
+
+image: your-dockerhub-username/your-app
+
+servers:
+  web:
+    hosts:
+      - YOUR_PRODUCTION_SERVER_IP
+
+proxy:
+  ssl: true
+  hosts: 
+    - your-domain.com
+    - www.your-domain.com
+
+registry:
+  username: YOUR_DOCKERHUB_USERNAME
+
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+env:
+  secret:
+    - RAILS_MASTER_KEY
+  clear:
+    SOLID_QUEUE_IN_PUMA: true
+
+aliases:
+  console: app exec --interactive --reuse "bin/rails console"
+  shell: app exec --interactive --reuse "bash"
+  logs: app logs -f
+  dbc: app exec --interactive --reuse "bin/rails dbconsole"
+
+volumes:
+  - "your_app_storage:/rails/storage"
+
+asset_path: /rails/public/assets
+
+builder:
+  arch: amd64

@@ -1,0 +1,10 @@
+div class="flex"
+  - users_arr.each do |user|
+    - if user_linkable?(user)
+      div class="relative cursor-pointer hover:z-10 transition-transform transform hover:scale-110 ml-[-10px]"
+        = link_to user_path(user), data: { turbo: false } do
+          = render Shared::AvatarComponent.new(username: user_display_name(user), bg_color: user_avatar_color(user), width: "28px", height: "28px", font_size: "12px")
+    - else
+      div class="relative ml-[-10px]"
+        = render Shared::AvatarComponent.new(username: user_display_name(user), bg_color: user_avatar_color(user), width: "28px", height: "28px", font_size: "12px")
+

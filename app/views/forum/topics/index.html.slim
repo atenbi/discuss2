@@ -1,0 +1,41 @@
+div class="p-6" role="main" aria-label="Forum topics page"
+  div class="flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:items-center lg:justify-between mb-4 mt-6"
+    div class="flex flex-col space-y-4 md:space-y-0 md:flex-row md:gap-4" role="search" aria-label="Topic filters and search"
+      = form_with url: forum_topics_path, method: :get, local: true, class: "flex items-center md:w-auto", "aria-label" => "Filter topics by category" do
+        - category_items = Shared::CustomSelectComponent.category_items(default_label: "Categories")
+        = render Shared::CustomSelectComponent.new(aria_label: "Filter by categories:", form_name: :category, items: category_items[:items], default_item: category_items[:default_item], auto_submit: true, selected_slug_or_id: @selected_category_slug, show_remove_filter: true, css_width: "w-3/5 md:w-56")
+      = search_form_for @q, data: { turbo_frame: :results, controller: "search" }, class: "flex items-center flex-grow w-3/5", "aria-label" => "Search topics" do |f|
+        = f.hidden_field :category_id_eq, value: @selected_category_id
+        = f.search_field :title_cont, class: "border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 shadow-sm px-4 py-2 w-full focus:outline-none focus:ring-sky-600 focus:border-sky-600", \
+            data: { action: "input->search#performSearch"}, \
+            placeholder: "Search topics...", \
+            autocomplete: "off", \
+            "aria-label" => "Search topics by title"
+      div class="flex justify-start space-x-4 md:space-x-6" role="navigation" aria-label="Sort options"
+        = link_to "Latest", forum_topics_path(q: { s: "created_at desc" }, category: params[:category] ), class: "px-4 py-2 font-medium #{(params.dig(:q, :s) == 'created_at desc' || params.dig(:q, :s).blank?) ? 'text-sky-600 dark:text-sky-400 border-b-2 border-sky-600 dark:border-sky-400' : 'text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300'}", "aria-label" => "Sort topics by latest"
+        = link_to "Top", forum_topics_path(q: { s: "posts_count desc" }, category: params[:category] ), class: "px-4 py-2 font-medium #{params.dig(:q, :s) == 'posts_count desc' ? 'text-sky-600 dark:text-sky-400 border-b-2 border-sky-600 dark:border-sky-400' : 'text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300'}", "aria-label" => "Sort topics by most replies"
+        = link_to "Categories", forum_categories_path, class: "px-4 py-2 font-medium text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300", "aria-label" => "View all categories"
+    - if current_user
+      div class="flex justify-start mt-4 lg:mt-0"
+        = link_to new_forum_topic_path, class: "btn btn-light-gray pl-2 w-auto", "aria-label" => "Create new topic" do
+          span.material-icons add
+          span New Topic
+  div class="relative overflow-x-auto"
+    = turbo_frame_tag :results do
+      - if @topics.any?
+        table class="w-full text-sm text-left text-gray-500 dark:text-gray-300" role="table" aria-label="Topics list"
+          thead class="text-xs text-gray-700 dark:text-gray-300 border-b-8 dark:border-gray-700"
+            tr role="row"
+              th class="px-6 py-3" scope="col" Topic
+              th class="px-6 py-3" scope="col" aria-label="Category and tags"
+              th class="px-6 py-3" scope="col"
+                span class="hover:underline" = sort_link(@q, :posts_count, "Replies")
+              th class="px-6 py-3" scope="col"
+                span class="hover:underline" = sort_link(@q, :num_views, "Views")
+              th class="px-6 py-3" scope="col"
+                span class="hover:underline" = sort_link(@q, :active_at, "Activity")
+          tbody id="topics" class="dark:border-gray-700" role="rowgroup"
+            = render @topics
+      - else
+        div class="dark:text-gray-300" role="status" aria-live="polite" No topics available.
+      = turbo_frame_tag :pagination, loading: :lazy, src: forum_topics_path(format: :turbo_stream, category: params[:category], tag: params[:tag], q: @ransack_params)

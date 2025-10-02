@@ -1,0 +1,4 @@
+CREATE DATABASE discuss_production;
+CREATE DATABASE discuss_production_cache;
+CREATE DATABASE discuss_production_queue;
+CREATE DATABASE discuss_production_cable;

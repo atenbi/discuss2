@@ -1,0 +1,37 @@
+div class="container mx-auto p-6" role="main" aria-label="Edit post page"
+  h3 class="text-center mb-4 dark:text-gray-200" role="banner"
+    |> Edit the post from the topic:
+    span class="font-bold dark:text-white" 
+      = @topic.title.truncate(35)
+    |< below
+  div class="max-w-3xl mx-auto"
+    div class="bg-white dark:bg-gray-800 p-6 rounded-md shadow-md border dark:border-gray-700 w-full mb-4" role="region" aria-label="Edit post form"
+      = form_with model: @post, url: forum_topic_post_path(@topic, @post), method: :patch, local: true, "aria-label" => "Edit post" do |f|
+        div class="form-group mb-4"
+          = f.label :content, 'Content*', class: 'block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1'
+          = f.text_area :content, rows: 6, class: 'block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 shadow-sm focus:ring-sky-600 focus:border-sky-600', required: true, "aria-required" => "true", "aria-describedby" => "edit-content-help"
+          span class="text-xs dark:text-gray-400" id="edit-content-help" role="note"
+            b class="dark:text-gray-300" Note: 
+            | You can format this post using 
+            = link_to "markdown", "https://daringfireball.net/projects/markdown/syntax", target: "_blank", rel: "noopener noreferrer", class: "font-medium hover:underline dark:text-sky-400", "aria-label" => "Learn about Markdown formatting syntax (opens in new tab)"
+            |  format.
+        div class="flex justify-between mt-6"
+          = f.button :submit, class: 'inline-flex items-center btn btn-primary', "aria-label" => "Update post" do
+            span Update
+          = link_to forum_topic_path(@topic), class: 'btn btn-light-gray', "aria-label" => "Go back to topic" do
+            span Back to topic
+    span class="dark:text-gray-300" In reply to:
+    div class="border-2 border-sky-500 dark:border-sky-600 rounded-md p-4 mb-6 mt-3 dark:bg-gray-800" role="article" aria-label="Original topic post"
+      div class="flex space-x-2"
+        = link_to user_path(@topic.user), data: { turbo: false }, class: "cursor-pointer hover:z-10 transition-transform transform hover:scale-110", "aria-label" => "View #{@topic.user.username}'s profile" do
+          = render Shared::AvatarComponent.new(username: @topic.user.username, bg_color: @topic.user.avatar_bg_color)
+        div class="flex flex-col"
+          p class="font-bold text-sky-700 dark:text-sky-400" 
+            = link_to user_path(@topic.user), data: { turbo: false }, class: "cursor-pointer hover:underline", "aria-label" => "View #{@topic.user.username}'s profile" do
+              = @topic.user.username
+          p class="mt-2 text-sm text-gray-500 dark:text-gray-400 flex items-center"
+            span class="material-icons mr-1" aria-hidden="true"
+              | schedule
+            = "#{time_ago_in_words(@topic.created_at)} ago"
+      div class="prose mt-4 text-gray dark:prose-invert dark:text-gray-200" role="region" aria-label="Topic content"
+        = render_markdown(@topic.content)

@@ -1,0 +1,33 @@
+div class="flex flex-col justify-center items-center mt-8" role="main" aria-label="Registration form container"
+  div class="w-[20rem] bg-white dark:bg-gray-800 rounded-lg shadow-md border dark:border-gray-700 sm:w-[28rem] xl:p-0"
+    div class="p-6 sm:p-8"
+      = render "shared/error_messages", resource: @user
+      h1 class="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-2xl" role="banner" aria-label="Registration page title"
+        | Sign up
+      = form_with scope: :user, html: { "data-turbo" => "false", "aria-label" => "User registration form" }, url: registration_path(:user), local: true, class: "space-y-4 md:space-y-6" do |f|
+        = invisible_captcha
+        div
+          = f.label :email, "Email address", class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg focus:ring-sky-600 focus:border-sky-600 block w-full p-2.5", "aria-required" => "true"
+        div
+          = f.label :username, "Username", class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+          = f.text_field :username, autocomplete: "username", placeholder: "Username", class: "bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg focus:ring-sky-600 focus:border-sky-600 block w-full p-2.5", "aria-required" => "true"
+        div
+          = f.label :password, "Password", class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+          = f.password_field :password, autocomplete: "current-password", placeholder: "••••••••", class: "bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg focus:ring-sky-600 focus:border-sky-600 block w-full p-2.5", "aria-required" => "true"
+        div
+          = f.label :password_confirmation, "Confirm Password", class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+          = f.password_field :password_confirmation, autocomplete: "current-password", placeholder: "••••••••", class: "bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg focus:ring-sky-600 focus:border-sky-600 block w-full p-2.5", "aria-required" => "true"
+        = f.submit "Sign up", class: "w-full text-white cursor-pointer bg-cyan-500 hover:bg-cyan-600 focus:ring focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center", "aria-label" => "Submit registration form"
+        div class="relative flex items-center justify-center w-full mt-4" role="separator" aria-label="Or sign up with"
+          div class="border-t border-gray-300 dark:border-gray-600 w-full"
+          span class="absolute bg-white dark:bg-gray-800 px-3 text-sm text-gray-500 dark:text-gray-400" or
+      div class="space-y-3 mt-4"
+        = button_to user_google_oauth2_omniauth_authorize_path, class: "flex items-center justify-center w-full p-2.5 border border-gray-300 dark:border-gray-600 dark:text-white rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors relative", method: :post, data: {turbo: false}, "aria-label" => "Sign up with Google" do
+          span class="absolute left-3"
+            = inline_svg_tag "icons/auth/google.svg", class: "w-5 h-5", "aria-hidden" => "true"
+          span class="mx-auto" Continue with Google
+      p class="text-[15px] font-light text-gray-500 dark:text-gray-400 mt-4 text-center"
+        | Already have an account?
+        = link_to "Log in", new_user_session_path, class: "pl-2 font-medium text-sky-600 dark:text-sky-400 hover:underline", "aria-label" => "Go to login page"
+      = render "devise/shared/having_trouble_links"
