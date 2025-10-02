@@ -93,7 +93,7 @@ jobs:
           bin/rails tailwindcss:build
       
       - name: Install Chrome
-        uses: browser-actions/setup-chrome@v1
+        uses: browser-actions/setup-chrome@v2
 
       - name: Install ChromeDriver
         uses: nanasess/setup-chromedriver@v2
