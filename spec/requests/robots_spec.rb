@@ -2,6 +2,14 @@ require "rails_helper"
 
 RSpec.describe "Robots", type: :request do
   describe "robots.txt" do
+    let(:cloudflare_public_url) { "https://example.r2.cloudflarestorage.com" }
+
+    before do
+      allow(Rails.application.credentials).to receive(:cloudflare).and_return({
+        public_url: cloudflare_public_url
+      })
+    end
+
     context "when not blocking all web crawlers" do
       it "allows all crawlers" do
         allow(Rails.application.credentials).to receive(:disallow_all_web_crawlers).and_return(false)
@@ -10,7 +18,7 @@ RSpec.describe "Robots", type: :request do
         expect(response.headers["Content-Type"]).to include "text/plain"
         expect(response.body).to include("User-agent: *")
         expect(response.body).to include("Allow: /")
-        expect(response.body).to include("Sitemap: http://www.example.com/sitemap.xml.gz")
+        expect(response.body).to include("Sitemap: #{cloudflare_public_url}/sitemaps/sitemap.xml.gz")
       end
     end
 
@@ -22,7 +30,7 @@ RSpec.describe "Robots", type: :request do
         expect(response.headers["Content-Type"]).to include "text/plain"
         expect(response.body).to include("User-agent: *")
         expect(response.body).to include("Disallow: /")
-        expect(response.body).to include("Sitemap: http://www.example.com/sitemap.xml.gz")
+        expect(response.body).to include("Sitemap: #{cloudflare_public_url}/sitemaps/sitemap.xml.gz")
       end
     end
   end

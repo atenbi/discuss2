@@ -39,7 +39,6 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   get "/robots.txt" => "robots#show", defaults: { format: "txt" }
-  get "/sitemap.xml.gz", to: "sitemaps#redirect_to_r2"
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest

@@ -1,11 +1,12 @@
 class RobotsController < ApplicationController
   def show
-    sitemap_host = request.base_url
+    sitemap_host = "#{Rails.application.credentials.cloudflare[:public_url]}"
+
     content = <<~ROBOTS
 			User-agent: *
 			#{disallow_all_crawlers? ? 'Disallow: /' : 'Allow: /'}
 
-			Sitemap: #{sitemap_host}/sitemap.xml.gz
+			Sitemap: #{sitemap_host}/sitemaps/sitemap.xml.gz
     ROBOTS
 
     render plain: content, content_type: "text/plain"
