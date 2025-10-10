@@ -11,7 +11,7 @@ gem "stimulus-rails"
 gem "tailwindcss-rails"
 gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
-gem "solid_cache", "~> 1.0.6"
+gem "solid_cache", "~> 1.0.8"
 gem "solid_queue", "~> 1.0.2"
 gem "solid_cable"
 gem "bootsnap", require: false
