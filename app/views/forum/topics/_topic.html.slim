@@ -21,4 +21,4 @@ tr id=dom_id(topic) class=row_classes
   td class="px-6 py-4 dark:text-gray-300 w-1/5" = render Topics::AvatarsStackComponent.new(users_arr: topic.participants.limit(5))
   td class="px-6 py-4 dark:text-gray-300 w-1/10" = topic.posts_count
   td class="px-6 py-4 dark:text-gray-300 w-1/10" = topic.num_views
-  td class="px-6 py-4 dark:text-gray-300 w-1/5" = "#{time_ago_in_words(topic.created_at)} ago"
+  td class="px-6 py-4 dark:text-gray-300 w-1/5" = "#{time_ago_in_words(topic.active_at)} ago"
