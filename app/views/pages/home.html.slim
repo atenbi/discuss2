@@ -20,7 +20,7 @@ section id="advantages" class="mb-24" aria-labelledby="advantages-heading"
 			div class="flex w-full justify-between items-center gap-4 order-2 lg:order-1"
 				= inline_svg_tag "icons/homepage/open-source.svg", "aria-hidden" => "true", class: "hidden lg:block"
 				div class="flex w-full lg:max-w-[548px] flex-col items-start"
-					span id="open-source-heading" class="text-white text-base lg:text-xl leading-[150%] tracking-[-0.4px] font-medium break-words"
+					span id="open-source-heading" class="text-white text-[20px] leading-[150%] tracking-[-0.4px] font-medium break-words"
 						| discuss² is a fully open source discussion platform released under the MIT license. Self-host on your own infrastructure with complete control over your data and community.
 			div class="w-full h-[334px] lg:max-w-[1040px] lg:h-[592px] rounded-[8px] lg:rounded-[21px] border-[8px] lg:border-[12px] border-black aspect-ratio-[587/334] lg:aspect-ratio-[1040/592] relative lg:absolute lg:right-[75px] lg:bottom-[-153px] bg-[url('backgrounds/homepage/discuss-desktop.png')] bg-cover bg-no-repeat bg-left-top order-1 xl:order-2" role="img" aria-label="Mobile app screenshot showing discuss² interface"
 				div class="absolute inset-x-0 bottom-0 h-[73px] lg:h-[291px] bg-gradient-to-t from-[#1E1F22] to-transparent pointer-events-none"
@@ -28,7 +28,7 @@ section id="advantages" class="mb-24" aria-labelledby="advantages-heading"
 			div class="flex flex-col lg:max-w-[588px] lg:h-[600px] p-10 justify-between items-start rounded-[20px] border border-[#4C4C4C] bg-[#1E1F22]" role="article" aria-labelledby="customizable-heading"
 				= inline_svg_tag "icons/homepage/graphic-design.svg", "aria-hidden" => "true"
 				div class="flex flex-col items-start gap-5"
-					span id="customizable-heading" class="text-white text-[20px] lg:text-2xl font-medium leading-[150%] tracking-[-0.4px]"
+					span id="customizable-heading" class="text-white text-[20px] font-medium leading-[150%] tracking-[-0.4px]"
 						| Fully Customizable Modify colors, layouts, logos, and extend the front-end to match your brand perfectly.
 					= link_to "https://github.com/atenbi/discuss2/blob/main/README.md", target: "_blank", class: "btn-ghost", "aria-label" => "Get started with customization - opens in new tab" do
 						span Get started
@@ -36,7 +36,7 @@ section id="advantages" class="mb-24" aria-labelledby="advantages-heading"
 			div class="flex flex-col lg:w-[588px] lg:h-[600px] p-10 justify-between items-start rounded-[20px] border border-[#4C4C4C] bg-[#1E1F22]" role="article" aria-labelledby="security-heading"
 				= inline_svg_tag "icons/homepage/security-lock.svg", "aria-hidden" => "true"
 				div class="flex flex-col items-start gap-5"
-					span id="security-heading" class="text-white text-2xl font-medium leading-[150%] tracking-[-0.4px]"
+					span id="security-heading" class="text-white text-[20px] font-medium leading-[150%] tracking-[-0.4px]"
 						| Security-Focused Industry-standard authentication, input validation, and permission handling with community-driven security improvements.
 					= mail_to "discuss2@atenbi.com", class: "btn-ghost", "aria-label" => "Contact us about security - opens email client" do
 						span Contact us
@@ -59,7 +59,7 @@ section id="communities" class="mb-24 relative" aria-labelledby="communities-hea
 			span id="developers-heading" class="text-white text-[40px] leading-[120%] tracking-[-1.2px]"
 				| For Developers,<br> By Developers
 			div class="flex flex-col items-start gap-5"
-				div class="flex flex-col gap-8 text-white text-base lg:text-xl font-medium leading-[150%] tracking-[-0.32px] lg:tracking-[-0.4px] opacity-80"
+				div class="flex flex-col gap-8 text-white text-base lg:text-[20px] font-medium leading-[150%] tracking-[-0.32px] lg:tracking-[-0.4px] opacity-80"
 					span
 						| discuss² is designed to be developer-friendly from the ground up. The codebase is clean, modular, and well-documented - making it easy to contribute, extend, or integrate into other projects.
 					span
