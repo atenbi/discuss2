@@ -6,7 +6,11 @@ section id="hero" class="mb-24" aria-labelledby="hero-heading"
 			span class="text-base lg:text-xl leading-[120%] tracking-[-0.6px]"
 				| a modern, open-source community platform.
 		div class="flex items-center gap-2.5" role="group" aria-label="Call to action buttons"
-			= link_to "https://github.com/atenbi/discuss2/blob/main/README.md", target: "_blank", class: "btn-white", "aria-label" => "Build your community - opens in new tab" do
+			= link_to "https://github.com/atenbi/discuss2/blob/main/README.md",
+			          target: "_blank",
+			          class: "btn-white",
+			          "aria-label" => "Build your community - opens in new tab",
+			          data: { controller: "data-layer", action: "click->data-layer#buildYourCommunityClick" } do
 				span Build your community
 				= inline_svg_tag "icons/homepage/arrow-up-right.svg", "aria-hidden" => "true"
 			= mail_to "discuss2@atenbi.com", "Contact us", class: "btn-ghost", "aria-label" => "Contact us via email"
