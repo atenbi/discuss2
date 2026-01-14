@@ -83,7 +83,7 @@ namespace :db do
       post.save!
 
       if topic_meta[attrs[:topic_id]]
-        topic_meta[attrs[:topic_id]][:last_post_at] = [topic_meta[attrs[:topic_id]][:last_post_at], post_time].compact.max
+        topic_meta[attrs[:topic_id]][:last_post_at] = [ topic_meta[attrs[:topic_id]][:last_post_at], post_time ].compact.max
       end
       print "."
     end
@@ -103,7 +103,7 @@ namespace :db do
     puts "\nUpdating Topic Activity..."
     topic_meta.each do |topic_id, meta|
       next unless meta[:last_post_at]
-      final_time = [meta[:created_at], meta[:last_post_at]].max
+      final_time = [ meta[:created_at], meta[:last_post_at] ].max
       Forum::Topic.where(id: topic_id).update_all(active_at: final_time, updated_at: final_time)
       print "."
     end
@@ -382,4 +382,3 @@ namespace :db do
     ]
   end
 end
-
