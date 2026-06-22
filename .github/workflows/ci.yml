@@ -96,7 +96,7 @@ jobs:
         uses: browser-actions/setup-chrome@v1
 
       - name: Install ChromeDriver
-        uses: nanasess/setup-chromedriver@v2
+        uses: nanasess/setup-chromedriver@v3
 
       - name: Setup test database
         run: bin/rails db:test:prepare
