@@ -6,15 +6,17 @@ export default class extends Controller {
     this.ga_defined = (typeof window.dataLayer !== "undefined");
 
     const cookiesAccepted = localStorage.getItem("cookiesAccepted");
-    const deniedAt = localStorage.getItem("deniedAt");
+    const deniedAt = Number(localStorage.getItem("deniedAt"));
     const time_24_hours = 24 * 60 * 60 * 1000
     const rejectionIntervalDate = deniedAt + time_24_hours;
 
-    if (!cookiesAccepted && (!deniedAt || Date.now() > rejectionIntervalDate)) {
+    if (cookiesAccepted) {
+      this.enableGoogleConsent();
+    } else if (deniedAt && Date.now() <= rejectionIntervalDate) {
+      this.denyGoogleConsent();
+    } else {
       this.setDefaultStateOfGoogleConsent();
       this.showCookieAcceptance();
-    } else {
-      this.enableGoogleConsent();
     }
   }
 
